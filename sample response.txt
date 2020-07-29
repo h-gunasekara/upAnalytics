@@ -1,0 +1,48 @@
+$ curl https://api.up.com.au/api/v1/transactions \
+       -G \
+       -H 'Authorization: Bearer up:demo:OMbDqnV8N6c1Gz2b' \
+       -d 'page[size]=1'
+
+{
+  "data": [
+    {
+      "id": "01a2a2f2-255f-4e75-b80e-5e7ad6b32577",
+      "type": "transactions",
+      "attributes": {
+        "status": "SETTLED",
+        "rawText": null,
+        "description": "David Taylor",
+        "message": "Money for the pizzas last night.",
+        "holdInfo": null,
+        "roundUp": null,
+        "cashback": null,
+        "amount": {
+          "currencyCode": "AUD",
+          "value": "-59.98",
+          "valueInBaseUnits": -5998
+        },
+        "foreignAmount": null,
+        "settledAt": "2020-07-26T07:52:10+10:00",
+        "createdAt": "2020-07-26T07:52:10+10:00"
+      },
+      "links": {
+        "self": "https://api.up.com.au/api/v1/transactions/01a2a2f2-255f-4e75-b80e-5e7ad6b32577"
+      },
+      "relationships": {
+        "account": {
+          "links": {
+            "related": "https://api.up.com.au/api/v1/accounts/4efad1c5-6ec9-450a-85d0-a7536bb2e2ca"
+          },
+          "data": {
+            "type": "accounts",
+            "id": "4efad1c5-6ec9-450a-85d0-a7536bb2e2ca"
+          }
+        }
+      }
+    }
+  ],
+  "links": {
+    "prev": null,
+    "next": "https://api.up.com.au/api/v1/transactions?page%5Bafter%5D=WyIyMDIwLTA3LTI1VDIxOjUyOjEwLjcyMDQxMjAwMFoiLCIwMWEyYTJmMi0yNTVmLTRlNzUtYjgwZS01ZTdhZDZiMzI1NzciXQ%3D%3D&page%5Bsize%5D=1"
+  }
+}

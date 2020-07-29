@@ -1,0 +1,11 @@
+data -> id
+data -> type
+data -> attributes -> description
+data -> attributes -> message
+data -> attributes -> roundUp
+data -> attributes -> roundUp -> value
+data -> attributes -> roundUp -> valueInBaseUnits
+data -> attributes -> amount -> value
+data -> attributes -> amount -> valueInBaseUnits
+data -> attributes -> createdAt
+links -> next

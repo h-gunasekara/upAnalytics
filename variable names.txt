@@ -1,0 +1,14 @@
+transaction_id 
+tran_type
+description
+message
+roundup
+roundup_value
+roundup_value_base
+amount_value
+amount_value_base
+created_at,
+user_id,
+account_id
+
+transaction_id, tran_type, description, message, roundup, roundup_value, roundup_value_base, amount_value, amount_value_base, created_at, user_id, account_id

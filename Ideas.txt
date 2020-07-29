@@ -1,0 +1,32 @@
+Create a monthly reporting system
+create a website to track various analytics
+    Send it to up 
+        get a job working with them
+    
+Things to do:
+
+    1. get the data successfully extracted
+    2. put that into postgresql 
+        a. create a way to update without resetting everything
+        b. once we have an up to date table then we can easily do analysis from there.
+    3. integrate that with tableau
+    4. set up monthly reporting
+    5. create website
+        a. create bespoke analytics 
+    6. create login system
+    7. send to the head of product
+
+Nice to haves:
+    1. Connect with Spaceship and IBKR
+
+Things I want to see in a monthly report:
+
+    1. total assets under value v time
+        a. colour coded based on the type of transaction
+        b. filters
+        c. x moving averages
+    2. categorisation comparisons
+    3. money saved from roundups
+    4. money gained from interest
+    5. weekly spends
+    6. Budgets
