@@ -1,3 +1,17 @@
+#!/usr/bin/env python
+
+"""
+************************************************************************
+Finding and uploading only the most recent transactions to conserve 
+resources 
+************************************************************************
+"""
+
+__author__      =       "Hamish Gunasekara"
+__version__     =       "1.0.0"
+__email__       =       "hamish.gunasekara@gmail.com"
+
+
 import up_analytics
 import requests
 import json
