@@ -23,7 +23,8 @@ if sys.argv:
     if user_id == 'hamish' or user_id == 'nina':
         header, cur, con = up_analytics.connect_to_db(user_id)
 
-        up_analytics.extract_latest_transactions(cur, con, header, user_id)
+        transaction_params = {'page[size]': 100}
+        up_analytics.extract_transactions(header, cur, con, transaction_params, user_id)
 
         up_analytics.close_db(cur, con)
     else:

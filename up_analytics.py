@@ -15,14 +15,15 @@ import requests
 import json
 import psycopg2
 import yaml
+import sys
 from datetime import datetime, timedelta
 from configparser import ConfigParser
 
-def connect_to_db():
+def connect_to_db(user_id):
     config_info = open("config.yaml")
     parsed_config_info = yaml.load(config_info, Loader=yaml.FullLoader)
 
-    API_KEY = parsed_config_info['config']['api_info']['api_key']
+    API_KEY = parsed_config_info['config']['api_key'][user_id]
     header = {'Authorization': 'Bearer ' + API_KEY}
 
     # connect to db
@@ -46,13 +47,13 @@ def test_ping(header):
     print("Response is = " + str(test_ping.json()))
 
 
-def extract_latest_transactions(cur, con, header):
-    cur.execute(
-        "select created_at from	d_transaction order by created_at desc limit 1")
+def extract_latest_transactions(cur, con, header, user_id):
+    select_statement = "select created_at from	d_transaction where user_id = '{}' order by created_at desc limit 1".format(user_id)
+    cur.execute(select_statement)
     latest_dt = cur.fetchall()
     latest_date = latest_dt[0][0] + timedelta(seconds=2)
     transaction_params = {'page[size]': 100, 'filter[since]': latest_date}
-    extract_transactions(header, cur, con, transaction_params)
+    extract_transactions(header, cur, con, transaction_params, user_id)
 
 
 def upload_to_db(
@@ -93,7 +94,7 @@ def upload_to_db(
     print("Uploaded transaction from {}!".format(description))
 
 
-def extract_transactions(header, cur, con, transaction_params):
+def extract_transactions(header, cur, con, transaction_params, user_id):
     tran_page_url = "https://api.up.com.au/api/v1/transactions"
     while tran_page_url:
         r = requests.get(
@@ -124,7 +125,8 @@ def extract_transactions(header, cur, con, transaction_params):
                 amount_value = info['attributes']['amount']['value']
                 amount_value_base = info['attributes']['amount']['valueInBaseUnits']
                 created_at = info['attributes']['createdAt']
-                user_id = 0
+
+        
                 account_id = info['relationships']['account']['data']['id']
 
                 # print("id is " + str(transaction_id))
@@ -166,10 +168,17 @@ def close_db(cur, con):
 
 # main function
 def main():
-    header, cur, con = connect_to_db()
-    transaction_params = {'page[size]': 100}
-    extract_transactions(header, cur, con, transaction_params)
-    close_db(cur, con)
+    if sys.argv:
+        user_id = sys.argv[0]
+        if user_id == 'hamish' or user_id == 'nina':
+            header, cur, con = connect_to_db(user_id)
+            transaction_params = {'page[size]': 100}
+            extract_transactions(header, cur, con, transaction_params, user_id)
+            close_db(cur, con)
+        else:
+            print("user_id is invalid")
+    else:
+        print("No user_id supplied")
 
 
 if __name__ == "__main__":
