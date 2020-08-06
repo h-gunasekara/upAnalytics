@@ -1,0 +1,1848 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20202.20.0721.1350                               -->
+<workbook source-build='2020.2.4 (20202.20.0721.1350)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <_.fcp.SetMembershipControl.true...SetMembershipControl />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+    <ZoneBackgroundTransparency />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <style>
+    <_.fcp.MarkAnimation.true...style-rule element='animation'>
+      <format attr='animation-duration' value='0.5' />
+      <format attr='animation-style' value='as-synced' />
+      <format attr='animation-on' value='ao-off' />
+    </_.fcp.MarkAnimation.true...style-rule>
+  </style>
+  <datasources>
+    <datasource caption='d_transaction (upBank)' inline='true' name='federated.0k2q1l71jb5u3913wsvyg1drrjx7' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='localhost' name='postgres.0iioro70cxgn4918i4sxs0r7uobn'>
+            <connection authentication='username-password' class='postgres' dbname='upBank' odbc-native-protocol='' one-time-sql='' port='5432' server='localhost' username='postgres' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='postgres.0iioro70cxgn4918i4sxs0r7uobn' name='d_transaction' table='[public].[d_transaction]' type='table' />
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='postgres.0iioro70cxgn4918i4sxs0r7uobn' name='d_transaction' table='[public].[d_transaction]' type='table' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>transaction_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[transaction_id]</local-name>
+            <parent-name>[d_transaction]</parent-name>
+            <remote-alias>transaction_id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>127</width>
+            <contains-null>false</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[d_transaction_4C694BC52A514120A9443CB3164B71CA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[created_at]</local-name>
+            <parent-name>[d_transaction]</parent-name>
+            <remote-alias>created_at</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[d_transaction_4C694BC52A514120A9443CB3164B71CA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>amount_value</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[amount_value]</local-name>
+            <parent-name>[d_transaction]</parent-name>
+            <remote-alias>amount_value</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[d_transaction_4C694BC52A514120A9443CB3164B71CA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>amount_value_base</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[amount_value_base]</local-name>
+            <parent-name>[d_transaction]</parent-name>
+            <remote-alias>amount_value_base</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[d_transaction_4C694BC52A514120A9443CB3164B71CA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tran_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[tran_type]</local-name>
+            <parent-name>[d_transaction]</parent-name>
+            <remote-alias>tran_type</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>127</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[d_transaction_4C694BC52A514120A9443CB3164B71CA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>description</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[description]</local-name>
+            <parent-name>[d_transaction]</parent-name>
+            <remote-alias>description</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[d_transaction_4C694BC52A514120A9443CB3164B71CA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>message</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[message]</local-name>
+            <parent-name>[d_transaction]</parent-name>
+            <remote-alias>message</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[d_transaction_4C694BC52A514120A9443CB3164B71CA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>roundup</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[roundup]</local-name>
+            <parent-name>[d_transaction]</parent-name>
+            <remote-alias>roundup</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_BIT&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[d_transaction_4C694BC52A514120A9443CB3164B71CA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>roundup_value</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[roundup_value]</local-name>
+            <parent-name>[d_transaction]</parent-name>
+            <remote-alias>roundup_value</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_FLOAT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_DOUBLE&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[d_transaction_4C694BC52A514120A9443CB3164B71CA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>roundup_value_base</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[roundup_value_base]</local-name>
+            <parent-name>[d_transaction]</parent-name>
+            <remote-alias>roundup_value_base</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[d_transaction_4C694BC52A514120A9443CB3164B71CA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>user_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[user_id]</local-name>
+            <parent-name>[d_transaction]</parent-name>
+            <remote-alias>user_id</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>127</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[d_transaction_4C694BC52A514120A9443CB3164B71CA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>account_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[account_id]</local-name>
+            <parent-name>[d_transaction]</parent-name>
+            <remote-alias>account_id</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>127</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[d_transaction_4C694BC52A514120A9443CB3164B71CA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='RUNNING_SUM(SUM([amount_value]))/RUNNING_SUM(COUNT([amount_va...' datatype='real' name='[Calculation_868350313161043974]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RUNNING_SUM(SUM([amount_value]))/RUNNING_SUM(COUNT([amount_value]))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='7_day_mv' datatype='real' name='[Calculation_868350313164144647]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='WINDOW_AVG(RUNNING_SUM(SUM([amount_value])), -6, 0)'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='1_mth_mv' datatype='real' name='[Calculation_868350313164857353]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='WINDOW_AVG(RUNNING_SUM(SUM([amount_value])), -30, 0)'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <_.fcp.ObjectModelTableType.true...column caption='d_transaction' datatype='table' name='[__tableau_internal_object_id__].[d_transaction_4C694BC52A514120A9443CB3164B71CA]' role='measure' type='quantitative' />
+      <column datatype='real' name='[amount_value]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[amount_value_base]' role='measure' type='quantitative' />
+      <column datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
+      <column datatype='real' name='[roundup_value]' role='measure' type='quantitative' />
+      <column-instance column='[amount_value]' derivation='Sum' name='[cum:sum:amount_value:qk]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+      </column-instance>
+      <column-instance column='[created_at]' derivation='Month' name='[mn:created_at:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[amount_value]' derivation='Sum' name='[sum:amount_value:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[amount_value_base]' derivation='Sum' name='[sum:amount_value_base:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[roundup_value]' derivation='Sum' name='[sum:roundup_value:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[Calculation_868350313161043974]' derivation='User' name='[usr:Calculation_868350313161043974:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' />
+      </column-instance>
+      <column-instance column='[Calculation_868350313164144647]' derivation='User' name='[usr:Calculation_868350313164144647:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' />
+      </column-instance>
+      <column-instance column='[Calculation_868350313164857353]' derivation='User' name='[usr:Calculation_868350313164857353:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' />
+      </column-instance>
+      <column-instance column='[created_at]' derivation='Weekday' name='[wd:created_at:ok]' pivot='key' type='ordinal' />
+      <group caption='Action (DAY(created_at))' hidden='true' name='[Action (DAY(created_at))]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[tdy:created_at:ok]' />
+        </groupfilter>
+      </group>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[mn:created_at:ok]' palette='blue_10_0' type='palette'>
+            <map to='#2a5783'>
+              <bucket>8</bucket>
+            </map>
+            <map to='#3e6c99'>
+              <bucket>7</bucket>
+            </map>
+            <map to='#5081ae'>
+              <bucket>6</bucket>
+            </map>
+            <map to='#6798c1'>
+              <bucket>5</bucket>
+            </map>
+            <map to='#7eaed3'>
+              <bucket>4</bucket>
+            </map>
+            <map to='#9ac6e4'>
+              <bucket>3</bucket>
+            </map>
+            <map to='#b9ddf1'>
+              <bucket>2</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313160495109:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313161043974:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313164857353:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313164144647:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]:1&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:roundup_value:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value:qk]&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[wd:created_at:ok]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>2020</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>4</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>3</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>6</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>2</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>5</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>1</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>7</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;New Zealand&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='d_transaction' id='d_transaction_4C694BC52A514120A9443CB3164B71CA'>
+            <properties context=''>
+              <relation connection='postgres.0iioro70cxgn4918i4sxs0r7uobn' name='d_transaction' table='[public].[d_transaction]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <shared-views>
+    <shared-view name='federated.0k2q1l71jb5u3913wsvyg1drrjx7'>
+      <datasources>
+        <datasource caption='d_transaction (upBank)' name='federated.0k2q1l71jb5u3913wsvyg1drrjx7' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0k2q1l71jb5u3913wsvyg1drrjx7'>
+        <column datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
+        <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
+        <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
+        <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
+      </datasource-dependencies>
+      <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]'>
+        <groupfilter function='member' level='[none:user_id:nk]' member='&quot;hamish&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+      </filter>
+      <filter class='quantitative' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' included-values='in-range'>
+        <min>#2020-02-06 00:00:00#</min>
+        <max>#2020-08-04 00:00:00#</max>
+      </filter>
+    </shared-view>
+  </shared-views>
+  <actions>
+    <action caption='Filter 1 (generated)' name='[Action1]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Accumulation' type='sheet' worksheet='Total Capital' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Accumulation' />
+      </command>
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name='Biggest Spends'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='d_transaction (upBank)' name='federated.0k2q1l71jb5u3913wsvyg1drrjx7' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0k2q1l71jb5u3913wsvyg1drrjx7'>
+            <column datatype='real' name='[amount_value]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[amount_value_base]' role='measure' type='quantitative' />
+            <column datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[description]' role='dimension' type='nominal' />
+            <column-instance column='[amount_value_base]' derivation='None' name='[none:amount_value_base:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[description]' derivation='None' name='[none:description:nk]' pivot='key' type='nominal' />
+            <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
+            <column-instance column='[amount_value]' derivation='Sum' name='[sum:amount_value:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[amount_value_base]' derivation='Sum' name='[sum:amount_value_base:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
+            <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:amount_value_base:qk]' included-values='in-range'>
+            <max>0</max>
+          </filter>
+          <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]'>
+            <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:description:nk]' />
+              <groupfilter function='union'>
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;ANZ Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Auto Transfer from Rent&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Auto Transfer to Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Charlie Baylis&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Charlie Up&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;CommBank Trading&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Dad&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Forward from Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Forward to Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;GUNASEKARA H&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Interactive Br Aus&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Keith Gunasekara&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Quick save transfer to Spending Saver&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Spaceship&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer from Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer from Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer from Spending Saver&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to General savings &quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to Rent&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to Spending Saver&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to To use &quot;' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:amount_value_base:qk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' value='2864' />
+            <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value:qk]' value='c&quot;$&quot;#,##0.00;-&quot;$&quot;#,##0.00' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='omit-on-special' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value:qk]' value='false' />
+            <format attr='break-on-special' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value:qk]' value='false' />
+            <format attr='show-null-value-warning' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value:qk]' value='false' />
+            <format attr='omit-on-special' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' value='false' />
+            <format attr='break-on-special' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' value='false' />
+            <format attr='show-null-value-warning' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' value='false' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='8' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Square' />
+            <encodings>
+              <color column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' />
+              <size column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' />
+              <text column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]' />
+              <text column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{110E6F9B-489B-4C30-8A49-7354E4ABD686}' />
+    </worksheet>
+    <worksheet name='Inflows'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='d_transaction (upBank)' name='federated.0k2q1l71jb5u3913wsvyg1drrjx7' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0k2q1l71jb5u3913wsvyg1drrjx7'>
+            <column datatype='integer' name='[amount_value_base]' role='measure' type='quantitative' />
+            <column datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[description]' role='dimension' type='nominal' />
+            <column-instance column='[amount_value_base]' derivation='None' name='[none:amount_value_base:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[description]' derivation='None' name='[none:description:nk]' pivot='key' type='nominal' />
+            <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
+            <column-instance column='[amount_value_base]' derivation='Sum' name='[sum:amount_value_base:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
+            <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:amount_value_base:qk]' included-values='in-range'>
+            <min>0</min>
+          </filter>
+          <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]'>
+            <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:description:nk]' />
+              <groupfilter function='union'>
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;ANZ Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Auto Transfer from Rent&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Cover from Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Dad&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Forward from Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;GUNASEKARA H&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;MR HAMISH R GUNA&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Quick save transfer from Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer from Rent&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer from Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer from Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer from Spending Saver&quot;' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:amount_value_base:qk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' value='2864' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='omit-on-special' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' value='false' />
+            <format attr='break-on-special' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' value='false' />
+            <format attr='show-null-value-warning' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Square' />
+            <encodings>
+              <color column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' />
+              <size column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' />
+              <text column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{D81E299D-B37A-4240-8B4A-11E533CF75CC}' />
+    </worksheet>
+    <worksheet name='Interest'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Interest Paid</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='d_transaction (upBank)' name='federated.0k2q1l71jb5u3913wsvyg1drrjx7' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0k2q1l71jb5u3913wsvyg1drrjx7'>
+            <column datatype='real' name='[amount_value]' role='measure' type='quantitative' />
+            <column datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
+            <column-instance column='[amount_value]' derivation='Sum' name='[cum:sum:amount_value:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column datatype='string' name='[description]' role='dimension' type='nominal' />
+            <column-instance column='[description]' derivation='None' name='[none:description:nk]' pivot='key' type='nominal' />
+            <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
+            <column-instance column='[amount_value]' derivation='Sum' name='[sum:amount_value:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[created_at]' derivation='Month-Trunc' name='[tmn:created_at:qk]' pivot='key' type='quantitative' />
+            <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]'>
+            <groupfilter function='member' level='[none:description:nk]' member='&quot;Interest&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='quantitative' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tmn:created_at:qk]' included-values='in-range'>
+            <min>#2020-03-02 00:00:00#</min>
+            <max>#2020-08-01 00:00:00#</max>
+          </filter>
+          <slices>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tmn:created_at:qk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tmn:created_at:qk]' scope='cols' value='' />
+            <format attr='title' class='0' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' scope='rows' value='' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='font-size' data-class='subtotal' scope='cols' value='15' />
+            <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' value='c&quot;$&quot;#,##0;-&quot;$&quot;#,##0' />
+            <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value:qk]' value='c&quot;$&quot;#,##0.00;-&quot;$&quot;#,##0.00' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' value='c&quot;$&quot;#,##0;-&quot;$&quot;#,##0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]</rows>
+        <cols>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tmn:created_at:qk]</cols>
+      </table>
+      <simple-id uuid='{AFCC5F71-2A44-44B8-BC71-3A0924FD9D9C}' />
+    </worksheet>
+    <worksheet name='Monthly Comparison'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>MoM Comparison</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='d_transaction (upBank)' name='federated.0k2q1l71jb5u3913wsvyg1drrjx7' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0k2q1l71jb5u3913wsvyg1drrjx7'>
+            <column datatype='real' name='[amount_value]' role='measure' type='quantitative' />
+            <column datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
+            <column-instance column='[amount_value]' derivation='Sum' name='[cum:sum:amount_value:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column-instance column='[created_at]' derivation='Day' name='[dy:created_at:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[created_at]' derivation='Month' name='[mn:created_at:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
+            <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
+            <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]'>
+            <groupfilter function='level-members' level='[mn:created_at:ok]' />
+          </filter>
+          <slices>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' scope='rows' value='' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' value='c&quot;$&quot;#,##0;-&quot;$&quot;#,##0' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='5' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]' />
+              <color column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+                <format attr='mark-color' value='#4e79a7' />
+                <format attr='mark-markers-mode' value='auto' />
+                <format attr='line-interpolation' value='step' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]</rows>
+        <cols>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[dy:created_at:ok]</cols>
+      </table>
+      <simple-id uuid='{3439E271-0BA3-4884-9A26-CFCBF3846BE6}' />
+    </worksheet>
+    <worksheet name='Outflows'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='d_transaction (upBank)' name='federated.0k2q1l71jb5u3913wsvyg1drrjx7' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0k2q1l71jb5u3913wsvyg1drrjx7'>
+            <column datatype='real' name='[amount_value]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[amount_value_base]' role='measure' type='quantitative' />
+            <column-instance column='[description]' derivation='Attribute' name='[attr:description:nk]' pivot='key' type='nominal' />
+            <column datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
+            <column-instance column='[amount_value]' derivation='Sum' name='[cum:sum:amount_value:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column datatype='string' name='[description]' role='dimension' type='nominal' />
+            <column-instance column='[created_at]' derivation='None' name='[none:created_at:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[description]' derivation='None' name='[none:description:nk]' pivot='key' type='nominal' />
+            <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
+            <column-instance column='[amount_value_base]' derivation='Sum' name='[sum:amount_value_base:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
+            <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]'>
+            <groupfilter expression='ISNULL([description]) OR (NOT(CONTAINS(LOWER([description]), LOWER(&apos;transfer&apos;))))' function='filter' user:ui-enumeration='exclusive' user:ui-pattern-include-all-when-empty='true' user:ui-pattern_text='transfer' user:ui-pattern_type='contains'>
+              <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;$charliemcd&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;$hg&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;$ninabrown&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;7-Eleven&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Achilles Greek Street Food&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;ACHSM&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Afterpay&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;ALDI&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Alimentari&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Anaconda&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Anatolia Tantuni&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Ando&apos;s Bakery&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;ANZ Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;AQTP PTY LTD, SOUTH WHARF&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;ATM Cash Out&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Auto Transfer from Rent&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Auto Transfer from Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Auto Transfer to Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Auto Transfer to To use &quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Azalea Flowers&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Bakers Delight&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Bala&apos;s Cafe&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Bani&apos;s Restaurant &amp; Bar&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Beard &amp; Blade&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Beatrix&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Beem It&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Big W&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Bimbo&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Bloom Coffee Bar&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Blue Chillies&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Bon Ap&apos; Petit Bistro&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Bonus Payment&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Boost Juice&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Botanica Collective&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;BP&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Breadtop&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Brew Sisters&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Bricklane Bagels&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Brotherhood of St Laurence&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Brunswick Northside Boulders&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Bunnings Warehouse&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;BWS&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Casa Iberica Deli&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Casa Nata&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Catch&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Centerlink&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Charlie Baylis&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Charlie Up&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Chemist Warehouse&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Chin Chin&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;China Bar&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;CIBI&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;City West Water&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Classic Curry Restaurant&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Coles&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Coles Express&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Converse&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;COS&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Costco&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Country Road&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Cover from Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Cover to Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Cream Melbourne&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Curryocity&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Dad&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Dan Murphy&apos;s&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Daughter In Law&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;David Jones&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Domino&apos;s&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Dumplings Plus&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Evelyn Hotel&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Farro Pizzeria&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;FilmNeverDie&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Final interest payment from Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Final interest payment to Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Fitzroy Authorised Newsagency&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Fitzroy Nursery&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Fitzroy&apos;s Finest Fruit&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Flowers by Tribal Rose&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Flowers Vasette&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;FoodWorks&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Forward from Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Forward to Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Gelato Messina&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Goodlife Health Clubs&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Google Drive&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;GOON BBQ&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;GRAM&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Green Refectory&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Greener House&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Grill&apos;d&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Grub Fitzroy&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;GUNASEKARA H&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Hardware LA Barbers&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Harris Scarfe&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Hasir Kebabs&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;HealthSmart Pharmacy&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Heartattack and Vine&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Hibiki&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Horn Please&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Hotel Agencies Hospitality &amp; Restaurant Supplies&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Hub Australia&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Hungry Eye Fish &amp; Chips&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;IGA&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;IKEA&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Interactive Br Aus&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Interest&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Jack Menzel&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Jeremy&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Jetstar&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Jing Jai Thai Chadstone&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Joe Leuzzi Flowers&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Joy Market&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Keith Gunasekara&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Kmart&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Korean Kimchi Groceries&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;LA PORCHETTA - CARLTON,CARLTON&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Lamb on Brunswick Street&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Lily Harrison &quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Liquorland&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Lucky Asia Supermarket&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Lush&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Market Lane Coffee&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;McDonald&apos;s&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Mecca&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Melbournalia&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Mile End Bagels&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Milk the Cow&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Milligram&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Mind Games&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;MISS NINA LOUISE BRO&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Miznon Melbourne&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;MJ Bale&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;MR HAMISH R GUNA&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Mr Yum&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Mubble&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Muji&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Mukka Indian Restaurant&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;MyDeal.com.au&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Myki&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;N L BROWN&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;NADEEN KELLY, CARLTON&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Naked For Satan&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Naughtons Hotel&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Near &amp; Far&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Nina Brown&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Officeworks&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Optus&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Origin Energy&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;P and M Cherry&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Parco&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Peter Mac&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Phuoc Thanh&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Piccolina Gelateria&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Pidapipò Gelateria&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;PROM COUNTRY LODGE, FOSTER&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Quan 88 St Kilda&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Quick save transfer from Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Quick save transfer to Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Quick save transfer to Spending Saver&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Radhey Kitchen and Chai Bar&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;RaffleTix&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Readings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Real Greek Souvlaki Bar&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Republica St Kilda Beach&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Richmond Supermart&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Rooftop Bar&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Round Up&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Ruhi&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Saigon Street Eats&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Salvos&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;San Remo Fishermans Co-Op&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Schnitz&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Sea Salt Fish Cafe&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Seed Heritage&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Seed Heritage - Emporium Melbourne&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Sharetea&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Shawarma Rolls &amp; Pizza&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Shawcross Pizza Joint&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Sideshow Burgers&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;SkyBus&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Smiths Cakes &amp; Aquilana Pasticceria&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;SP * EPICA, 8189937422&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Spaceship&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;SQ *THE DUMPLINGS &amp; TE,Carlton&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;SQ *THE KRANSKY ,Essendon Fiel&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Steam&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Strike&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Subway&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Super Eight&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Sushi Sushi&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Tamura Sake Bar&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Target&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;The Clyde Hotel&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;The Corner Larder&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;The Fitz&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;The Iconic&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;The League of Honest Coffee&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;The Loft&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;The Old Raffles Place&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;The Plant Society Melbourne Flagship&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;The Provincial Hotel&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;The Rice Cooker&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;The Stone Hotel&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;The Vegetable Connection&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Think Asia&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Tidal River General Store &amp; Take Away&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Tokyo Hometown Japanese Supermarket&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Top Tea&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;TPG&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer from General savings &quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer from Rent&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer from Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer from Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer from Spending Saver&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer from To use &quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to General savings &quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to Investing&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to Rent&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to Spending Saver&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to To use &quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Trunk Bar &amp; Restaurant&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;TryBooking&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;TSG&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Uber&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Uber Eats&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Union Electric&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Universal Restaurant&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Viet Rose Vietnamese Restaurant&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Wilsons Promontory National Park&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Wonder Pies &amp; Deli&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Woolworths&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;WWW.NOIROT.COM.AU, OAKLEIGH&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Yo-Chi&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Zara&quot;' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <filter class='quantitative' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' included-values='in-range'>
+            <max>0</max>
+          </filter>
+          <slices>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <text column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[attr:description:nk]' />
+            </encodings>
+            <trendline enable-confidence-bands='false' enable-instant-analytics='true' enabled='true' exclude-color='false' exclude-intercept='false' fit='linear' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-color' value='#4e79a7' />
+                <format attr='mark-markers-mode' value='auto' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='stroke-color' value='#4e79a7be' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]</rows>
+        <cols>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:created_at:qk]</cols>
+        <page-trail-options enabled='true' start='0' trail-effect='none' />
+      </table>
+      <simple-id uuid='{EA7408F5-2AB6-4C7F-ABFB-D392CB5E159E}' />
+    </worksheet>
+    <worksheet name='Round Ups'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Savings From Round Ups</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='d_transaction (upBank)' name='federated.0k2q1l71jb5u3913wsvyg1drrjx7' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0k2q1l71jb5u3913wsvyg1drrjx7'>
+            <column datatype='real' name='[amount_value]' role='measure' type='quantitative' />
+            <column datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
+            <column-instance column='[amount_value]' derivation='Sum' name='[cum:sum:amount_value:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column datatype='string' name='[description]' role='dimension' type='nominal' />
+            <column-instance column='[created_at]' derivation='None' name='[none:created_at:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[description]' derivation='None' name='[none:description:nk]' pivot='key' type='nominal' />
+            <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
+            <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
+            <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]'>
+            <groupfilter function='member' level='[none:description:nk]' member='&quot;Round Up&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' scope='rows' value='' />
+            <format attr='title' class='0' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:created_at:qk]' scope='cols' value='' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' value='c&quot;$&quot;#,##0.00;-&quot;$&quot;#,##0.00' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' value='c&quot;$&quot;#,##0;-&quot;$&quot;#,##0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]</rows>
+        <cols>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:created_at:qk]</cols>
+      </table>
+      <simple-id uuid='{601F7A4D-02E9-428C-B191-F07E447F3464}' />
+    </worksheet>
+    <worksheet name='Sheet 8'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{21730D86-57CD-4E80-9F11-5103E2A57746}' />
+    </worksheet>
+    <worksheet name='Total Capital'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='d_transaction (upBank)' name='federated.0k2q1l71jb5u3913wsvyg1drrjx7' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0k2q1l71jb5u3913wsvyg1drrjx7'>
+            <column caption='7_day_mv' datatype='real' name='[Calculation_868350313164144647]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='WINDOW_AVG(RUNNING_SUM(SUM([amount_value])), -6, 0)'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column caption='1_mth_mv' datatype='real' name='[Calculation_868350313164857353]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='WINDOW_AVG(RUNNING_SUM(SUM([amount_value])), -30, 0)'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column datatype='real' name='[amount_value]' role='measure' type='quantitative' />
+            <column-instance column='[description]' derivation='Attribute' name='[attr:description:nk]' pivot='key' type='nominal' />
+            <column datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
+            <column-instance column='[amount_value]' derivation='Sum' name='[cum:sum:amount_value:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column datatype='string' name='[description]' role='dimension' type='nominal' />
+            <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
+            <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
+            <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_868350313164144647]' derivation='User' name='[usr:Calculation_868350313164144647:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' />
+            </column-instance>
+            <column-instance column='[Calculation_868350313164857353]' derivation='User' name='[usr:Calculation_868350313164857353:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313164857353:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313164857353:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313164144647:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <slices>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[:Measure Names]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[Multiple Values]' scope='rows' value='' />
+            <format attr='title' class='0' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' scope='cols' value='' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313164857353:qk]' value='C3081%' />
+            <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[Multiple Values]' value='C3081%' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[Multiple Values]' value='c&quot;$&quot;#,##0;-&quot;$&quot;#,##0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <tooltip column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[attr:description:nk]' />
+              <color column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+                <format attr='mark-color' value='#4e79a7' />
+                <format attr='mark-markers-mode' value='auto' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='stroke-color' value='#4e79a7be' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[Multiple Values]</rows>
+        <cols>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</cols>
+        <page-trail-options enabled='true' start='0' trail-effect='none' />
+      </table>
+      <simple-id uuid='{DEDDC042-09A2-4209-AC4F-D22C3D4BD2A0}' />
+    </worksheet>
+    <worksheet name='Weekly Spend'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='d_transaction (upBank)' name='federated.0k2q1l71jb5u3913wsvyg1drrjx7' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0k2q1l71jb5u3913wsvyg1drrjx7'>
+            <column datatype='real' name='[amount_value]' role='measure' type='quantitative' />
+            <column datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[message]' role='dimension' type='nominal' />
+            <column-instance column='[message]' derivation='None' name='[none:message:nk]' pivot='key' type='nominal' />
+            <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
+            <column-instance column='[amount_value]' derivation='Sum' name='[sum:amount_value:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[created_at]' derivation='Week-Trunc' name='[twk:created_at:qk]' pivot='key' type='quantitative' />
+            <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
+            <column-instance column='[created_at]' derivation='Weekday' name='[wd:created_at:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:message:nk]'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:message:nk]' />
+              <groupfilter function='union'>
+                <groupfilter function='member' level='[none:message:nk]' member='&quot;TOUCH NETWORKS A    0966531511&quot;' />
+                <groupfilter function='member' level='[none:message:nk]' member='&quot;TOUCH NETWORKS A    0972716999&quot;' />
+                <groupfilter function='member' level='[none:message:nk]' member='&quot;TOUCH NETWORKS A    0978528505&quot;' />
+                <groupfilter function='member' level='[none:message:nk]' member='&quot;TOUCH NETWORKS A    0985197923&quot;' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:message:nk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing custom-mark-size-in-axis-units='1.0' mark-alignment='mark-alignment-left' mark-sizing-setting='marks-scaling-on' use-custom-mark-size='false' />
+            <encodings>
+              <color column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[wd:created_at:ok]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value:qk]</rows>
+        <cols>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[twk:created_at:qk]</cols>
+      </table>
+      <simple-id uuid='{BDDC1EDF-4CAF-4C47-923C-A8B2F1FD7552}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Accumulation'>
+      <style />
+      <size sizing-mode='automatic' />
+      <datasources>
+        <datasource caption='d_transaction (upBank)' name='federated.0k2q1l71jb5u3913wsvyg1drrjx7' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0k2q1l71jb5u3913wsvyg1drrjx7'>
+        <column datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
+        <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
+      </datasource-dependencies>
+      <zones>
+        <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='4' w='100000' x='0' y='0'>
+          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='89028' id='28' param='horz' w='98848' x='576' y='1093'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='89028' id='23' param='horz' w='98848' x='576' y='1093'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='89028' id='21' w='98848' x='576' y='1093'>
+                <zone h='44512' id='3' name='Total Capital' w='98848' x='576' y='1093'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='22257' id='5' name='Round Ups' w='39103' x='60321' y='67864'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='22259' id='6' name='Interest' w='39103' x='60321' y='45605'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='44516' id='26' name='Monthly Comparison' w='59745' x='576' y='45605'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+            </zone>
+          </zone>
+          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' fixed-size='154' h='8786' id='27' is-fixed='true' param='vert' w='98848' x='576' y='90121'>
+            <zone _.fcp.SetMembershipControl.false...type='filter' _.fcp.SetMembershipControl.true...type-v2='filter' fixed-size='58' h='4414' id='30' is-fixed='true' name='Total Capital' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' values='database' w='98848' x='576' y='90121'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='4372' id='29' name='Monthly Comparison' pane-specification-id='5' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]' w='98848' x='576' y='94535'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1100' minheight='1100' sizing-mode='vscroll' />
+          <zones>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='40' w='100000' x='0' y='0'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98734' id='39' param='vert' w='99504' x='248' y='633'>
+                <zone _.fcp.SetMembershipControl.false...type='filter' _.fcp.SetMembershipControl.true...type-v2='filter' fixed-size='58' h='5225' id='30' name='Total Capital' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' values='database' w='99504' x='248' y='90499'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='44931' id='3' is-fixed='true' name='Total Capital' w='99504' x='248' y='633'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='44935' id='26' is-fixed='true' name='Monthly Comparison' w='60142' x='248' y='45564'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='3643' id='29' name='Monthly Comparison' pane-specification-id='5' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]' w='99504' x='248' y='95724'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='171' h='22469' id='6' is-fixed='true' name='Interest' w='39362' x='60390' y='45564'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='172' h='22466' id='5' is-fixed='true' name='Round Ups' w='39362' x='60390' y='68033'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{28A0AA88-F9B5-4673-8774-1914690F329A}' />
+    </dashboard>
+    <dashboard name='Spending'>
+      <style />
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='4' w='100000' x='0' y='0'>
+          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='97814' id='7' param='horz' w='98848' x='576' y='1093'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='97814' id='5' w='87329' x='576' y='1093'>
+              <zone h='48907' id='3' name='Weekly Spend' w='87329' x='576' y='1093'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='48907' id='9' name='Biggest Spends' w='87329' x='576' y='50000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' fixed-size='160' h='97814' id='6' is-fixed='true' param='vert' w='11519' x='87905' y='1093'>
+              <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='22678' id='8' name='Weekly Spend' pane-specification-id='0' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[wd:created_at:ok]' w='11519' x='87905' y='1093'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='13' w='100000' x='0' y='0'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98734' id='12' param='vert' w='99504' x='248' y='633'>
+                <zone fixed-size='280' h='49367' id='3' is-fixed='true' name='Weekly Spend' w='94549' x='248' y='633'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='13143' id='8' name='Weekly Spend' pane-specification-id='0' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[wd:created_at:ok]' w='4955' x='94797' y='633'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49367' id='9' is-fixed='true' name='Biggest Spends' w='94549' x='248' y='50000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{387562DD-9715-48DD-9E53-4591D747AE1A}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='worksheet' name='Total Capital'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+            <card pane-specification-id='2' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{170E483F-86DA-491F-841D-0CBBCD301BBC}' />
+    </window>
+    <window class='worksheet' name='Monthly Comparison'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+            <card pane-specification-id='5' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{ADE4E1F0-71B0-4FCF-B88E-48ABBDC37BE4}' />
+    </window>
+    <window class='worksheet' name='Round Ups'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{BDEA1C1A-1FFD-4EF6-A7C1-513641719E97}' />
+    </window>
+    <window class='worksheet' name='Interest'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{FF47E550-C23C-4F11-987A-413054E83865}' />
+    </window>
+    <window class='worksheet' name='Weekly Spend'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[wd:created_at:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{C98DC5E9-00D7-4B6A-8F81-FAB9B214186E}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Biggest Spends'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <floating-toolbar-visibility value='2' />
+      </viewpoint>
+      <simple-id uuid='{53F03757-3FC0-4008-9620-AA79BE3C09E0}' />
+    </window>
+    <window class='worksheet' name='Outflows'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='pattern' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]' type='filter' />
+            <card param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{995F465A-D355-44FF-9951-67EA6D284748}' />
+    </window>
+    <window class='worksheet' name='Inflows'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{86D74382-CDA5-44DB-99E2-0CDC8FCD3C33}' />
+    </window>
+    <window class='dashboard' name='Accumulation'>
+      <viewpoints>
+        <viewpoint name='Interest'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Monthly Comparison'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Round Ups'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Total Capital'>
+          <zoom type='entire-view' />
+          <floating-toolbar-visibility value='2' />
+        </viewpoint>
+      </viewpoints>
+      <active id='26' />
+      <simple-id uuid='{7A9D9692-2C02-4E9B-B021-44A144CA86EF}' />
+    </window>
+    <window class='dashboard' name='Spending'>
+      <viewpoints>
+        <viewpoint name='Biggest Spends' />
+        <viewpoint name='Weekly Spend'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='9' />
+      <simple-id uuid='{32E9778C-B707-4F7F-AC91-ADDCAB95A02B}' />
+    </window>
+    <window class='worksheet' name='Sheet 8'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{E0FD5F73-5500-4846-BC90-AD7BE1D27F5A}' />
+    </window>
+  </windows>
+</workbook>
