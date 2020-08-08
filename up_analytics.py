@@ -19,24 +19,24 @@ import sys
 from datetime import datetime, timedelta
 from configparser import ConfigParser
 
-def connect_to_db(user_id):
-    config_info = open("config.yaml")
-    parsed_config_info = yaml.load(config_info, Loader=yaml.FullLoader)
-
-    API_KEY = parsed_config_info['config']['api_key'][user_id]
-    header = {'Authorization': 'Bearer ' + API_KEY}
-
+def connect_to_db():
     # connect to db
     con = psycopg2.connect(
         host="localhost",
         database="upBank",
         user="postgres",
         password="hamish123")
-
     # cursor
     cur = con.cursor()
-    return header, cur, con
+    return cur, con
 
+
+def connect_to_up(user_id):
+    config_info = open("config.yaml")
+    parsed_config_info = yaml.load(config_info, Loader=yaml.FullLoader)
+    API_KEY = parsed_config_info['config']['api_key'][user_id]
+    header = {'Authorization': 'Bearer ' + API_KEY}
+    return header
 
 def test_ping(header):
     test_ping = requests.get(
@@ -171,7 +171,8 @@ def main():
     if sys.argv:
         user_id = sys.argv[0]
         if user_id == 'hamish' or user_id == 'nina':
-            header, cur, con = connect_to_db(user_id)
+            cur, con = connect_to_db()
+            header = connect_to_up(user_id)
             transaction_params = {'page[size]': 100}
             extract_transactions(header, cur, con, transaction_params, user_id)
             close_db(cur, con)

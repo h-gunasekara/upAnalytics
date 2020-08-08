@@ -409,7 +409,7 @@
       </filter>
       <filter class='quantitative' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' included-values='in-range'>
         <min>#2020-02-06 00:00:00#</min>
-        <max>#2020-08-04 00:00:00#</max>
+        <max>#2020-08-07 00:00:00#</max>
       </filter>
     </shared-view>
   </shared-views>
@@ -1339,10 +1339,10 @@
       </datasource-dependencies>
       <zones>
         <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='4' w='100000' x='0' y='0'>
-          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='89028' id='28' param='horz' w='98848' x='576' y='1093'>
-            <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='89028' id='23' param='horz' w='98848' x='576' y='1093'>
-              <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='89028' id='21' w='98848' x='576' y='1093'>
-                <zone h='44512' id='3' name='Total Capital' w='98848' x='576' y='1093'>
+          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='89845' id='28' param='horz' w='99504' x='248' y='642'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='89845' id='23' param='horz' w='99504' x='248' y='642'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='89845' id='21' w='99504' x='248' y='642'>
+                <zone h='44917' id='3' name='Total Capital' w='99504' x='248' y='642'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1350,7 +1350,7 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone h='22257' id='5' name='Round Ups' w='39103' x='60321' y='67864'>
+                <zone h='22464' id='5' name='Round Ups' w='39365' x='60387' y='68023'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1358,7 +1358,7 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone h='22259' id='6' name='Interest' w='39103' x='60321' y='45605'>
+                <zone h='22464' id='6' name='Interest' w='39365' x='60387' y='45559'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1366,7 +1366,7 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone h='44516' id='26' name='Monthly Comparison' w='59745' x='576' y='45605'>
+                <zone h='44928' id='26' name='Monthly Comparison' w='60139' x='248' y='45559'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1377,8 +1377,8 @@
               </zone>
             </zone>
           </zone>
-          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' fixed-size='154' h='8786' id='27' is-fixed='true' param='vert' w='98848' x='576' y='90121'>
-            <zone _.fcp.SetMembershipControl.false...type='filter' _.fcp.SetMembershipControl.true...type-v2='filter' fixed-size='58' h='4414' id='30' is-fixed='true' name='Total Capital' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' values='database' w='98848' x='576' y='90121'>
+          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' fixed-size='154' h='8871' id='27' is-fixed='true' param='vert' w='99504' x='248' y='90487'>
+            <zone _.fcp.SetMembershipControl.false...type='filter' _.fcp.SetMembershipControl.true...type-v2='filter' fixed-size='58' h='5293' id='30' is-fixed='true' name='Total Capital' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' values='database' w='99504' x='248' y='90487'>
               <zone-style>
                 <format attr='border-color' value='#000000' />
                 <format attr='border-style' value='none' />
@@ -1386,7 +1386,7 @@
                 <format attr='margin' value='4' />
               </zone-style>
             </zone>
-            <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='4372' id='29' name='Monthly Comparison' pane-specification-id='5' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]' w='98848' x='576' y='94535'>
+            <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='3578' id='29' name='Monthly Comparison' pane-specification-id='5' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]' w='99504' x='248' y='95780'>
               <zone-style>
                 <format attr='border-color' value='#000000' />
                 <format attr='border-style' value='none' />
@@ -1481,9 +1481,9 @@
       <size sizing-mode='automatic' />
       <zones>
         <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='4' w='100000' x='0' y='0'>
-          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='97814' id='7' param='horz' w='98848' x='576' y='1093'>
-            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='97814' id='5' w='87329' x='576' y='1093'>
-              <zone h='48907' id='3' name='Weekly Spend' w='87329' x='576' y='1093'>
+          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98716' id='7' param='horz' w='99504' x='248' y='642'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='98716' id='5' w='94549' x='248' y='642'>
+              <zone h='49358' id='3' name='Weekly Spend' w='94549' x='248' y='642'>
                 <zone-style>
                   <format attr='border-color' value='#000000' />
                   <format attr='border-style' value='none' />
@@ -1491,7 +1491,7 @@
                   <format attr='margin' value='4' />
                 </zone-style>
               </zone>
-              <zone h='48907' id='9' name='Biggest Spends' w='87329' x='576' y='50000'>
+              <zone h='49358' id='9' name='Biggest Spends' w='94549' x='248' y='50000'>
                 <zone-style>
                   <format attr='border-color' value='#000000' />
                   <format attr='border-style' value='none' />
@@ -1500,8 +1500,8 @@
                 </zone-style>
               </zone>
             </zone>
-            <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' fixed-size='160' h='97814' id='6' is-fixed='true' param='vert' w='11519' x='87905' y='1093'>
-              <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='22678' id='8' name='Weekly Spend' pane-specification-id='0' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[wd:created_at:ok]' w='11519' x='87905' y='1093'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' fixed-size='160' h='98716' id='6' is-fixed='true' param='vert' w='4955' x='94797' y='642'>
+              <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='13312' id='8' name='Weekly Spend' pane-specification-id='0' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[wd:created_at:ok]' w='4955' x='94797' y='642'>
                 <zone-style>
                   <format attr='border-color' value='#000000' />
                   <format attr='border-style' value='none' />
@@ -1700,7 +1700,7 @@
       </cards>
       <simple-id uuid='{C98DC5E9-00D7-4B6A-8F81-FAB9B214186E}' />
     </window>
-    <window class='worksheet' maximized='true' name='Biggest Spends'>
+    <window class='worksheet' name='Biggest Spends'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -1792,7 +1792,7 @@
       </viewpoint>
       <simple-id uuid='{86D74382-CDA5-44DB-99E2-0CDC8FCD3C33}' />
     </window>
-    <window class='dashboard' name='Accumulation'>
+    <window class='dashboard' maximized='true' name='Accumulation'>
       <viewpoints>
         <viewpoint name='Interest'>
           <zoom type='entire-view' />
