@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='utf-8' ?>
 
 <!-- build 20202.20.0721.1350                               -->
-<workbook source-build='2020.2.4 (20202.20.0721.1350)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+<workbook source-build='2020.2.4 (20202.20.0721.1350)' source-platform='win' version='18.1' xml:base='https://public.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
     <AutoCreateAndUpdateDSDPhoneLayouts />
     <_.fcp.MarkAnimation.true...MarkAnimation />
     <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelExtractV2.true...ObjectModelExtractV2 />
     <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
     <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
     <_.fcp.SetMembershipControl.true...SetMembershipControl />
@@ -14,6 +15,7 @@
     <WindowsPersistSimpleIdentifiers />
     <ZoneBackgroundTransparency />
   </document-format-change-manifest>
+  <repository-location id='up_bank_analytics_no_filter' path='/workbooks' revision='1.0' />
   <preferences>
     <preference name='ui.encoding.shelf.height' value='24' />
     <preference name='ui.shelf.height' value='26' />
@@ -30,7 +32,7 @@
       <connection class='federated'>
         <named-connections>
           <named-connection caption='localhost' name='postgres.0iioro70cxgn4918i4sxs0r7uobn'>
-            <connection authentication='username-password' class='postgres' dbname='upBank' odbc-native-protocol='' one-time-sql='' port='5432' server='localhost' username='postgres' />
+            <connection authentication='username-password' class='postgres' dbname='upBank' odbc-native-protocol='' one-time-sql='' port='5432' server='localhost' username='postgres' workgroup-auth-mode='as-is' />
           </named-connection>
         </named-connections>
         <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='postgres.0iioro70cxgn4918i4sxs0r7uobn' name='d_transaction' table='[public].[d_transaction]' type='table' />
@@ -253,6 +255,20 @@
         </metadata-records>
       </connection>
       <aliases enabled='yes' />
+      <column datatype='string' name='[:Measure Names]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]&quot;' value='Running Total' />
+          <alias key='&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313164857353:qk]&quot;' value='One Month Moving Average' />
+        </aliases>
+      </column>
+      <column datatype='real' name='[Calculation1]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RUNNING_SUM(SUM([amount_value]))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='inverse' datatype='real' name='[Calculation_1941332928851574784]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='-[amount_value_base]/100' />
+      </column>
       <column caption='RUNNING_SUM(SUM([amount_value]))/RUNNING_SUM(COUNT([amount_va...' datatype='real' name='[Calculation_868350313161043974]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='RUNNING_SUM(SUM([amount_value]))/RUNNING_SUM(COUNT([amount_value]))'>
           <table-calc ordering-type='Rows' />
@@ -276,11 +292,23 @@
       <column-instance column='[amount_value]' derivation='Sum' name='[cum:sum:amount_value:qk]' pivot='key' type='quantitative'>
         <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
       </column-instance>
+      <column-instance column='[amount_value]' derivation='Sum' name='[diff:sum:amount_value:qk]' pivot='key' type='quantitative'>
+        <table-calc diff-options='Relative' ordering-type='Rows' type='Difference'>
+          <address>
+            <value>-1</value>
+          </address>
+        </table-calc>
+      </column-instance>
       <column-instance column='[created_at]' derivation='Month' name='[mn:created_at:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[Forecast Indicator]' derivation='None' forecast-column-base='[Forecast Indicator]' forecast-column-type='forecast-indicator' name='[none:Forecast Indicator:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Calculation_1941332928851574784]' derivation='Sum' name='[sum:Calculation_1941332928851574784:qk]' pivot='key' type='quantitative' />
       <column-instance column='[amount_value]' derivation='Sum' name='[sum:amount_value:qk]' pivot='key' type='quantitative' />
       <column-instance column='[amount_value_base]' derivation='Sum' name='[sum:amount_value_base:qk]' pivot='key' type='quantitative' />
       <column-instance column='[roundup_value]' derivation='Sum' name='[sum:roundup_value:qk]' pivot='key' type='quantitative' />
       <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[Calculation1]' derivation='User' name='[usr:Calculation1:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' />
+      </column-instance>
       <column-instance column='[Calculation_868350313161043974]' derivation='User' name='[usr:Calculation_868350313161043974:qk]' pivot='key' type='quantitative'>
         <table-calc ordering-type='Rows' />
       </column-instance>
@@ -296,9 +324,246 @@
           <groupfilter function='level-members' level='[tdy:created_at:ok]' />
         </groupfilter>
       </group>
+      <extract _.fcp.ObjectModelExtractV2.true...object-id='' count='-1' enabled='false' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_GB' class='hyper' dbname='C:/Users/hamis/Google Drive/Side Projects/Up_API/Tableau Workbooks/d_transaction (upBank).hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='08/08/2020 04:52:43 AM' username='tableau_internal_user'>
+          <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh>
+            <refresh-event add-from-file-path='d_transaction (upBank)' increment-value='%null%' refresh-type='create' rows-inserted='1442' timestamp-start='2020-08-08 04:52:43.637' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>transaction_id</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[transaction_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>transaction_id</remote-alias>
+              <ordinal>0</ordinal>
+              <family>d_transaction</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1442</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>created_at</remote-name>
+              <remote-type>135</remote-type>
+              <local-name>[created_at]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>created_at</remote-alias>
+              <ordinal>1</ordinal>
+              <family>d_transaction</family>
+              <local-type>datetime</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>1097</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>amount_value</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[amount_value]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>amount_value</remote-alias>
+              <ordinal>2</ordinal>
+              <family>d_transaction</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>572</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>amount_value_base</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[amount_value_base]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>amount_value_base</remote-alias>
+              <ordinal>3</ordinal>
+              <family>d_transaction</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>572</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>tran_type</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[tran_type]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>tran_type</remote-alias>
+              <ordinal>4</ordinal>
+              <family>d_transaction</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>description</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[description]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>description</remote-alias>
+              <ordinal>5</ordinal>
+              <family>d_transaction</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>210</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>message</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[message]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>message</remote-alias>
+              <ordinal>6</ordinal>
+              <family>d_transaction</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>75</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>roundup</remote-name>
+              <remote-type>11</remote-type>
+              <local-name>[roundup]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>roundup</remote-alias>
+              <ordinal>7</ordinal>
+              <family>d_transaction</family>
+              <local-type>boolean</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>roundup_value</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[roundup_value]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>roundup_value</remote-alias>
+              <ordinal>8</ordinal>
+              <family>d_transaction</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>46</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>roundup_value_base</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[roundup_value_base]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>roundup_value_base</remote-alias>
+              <ordinal>9</ordinal>
+              <family>d_transaction</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>46</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>user_id</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[user_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>user_id</remote-alias>
+              <ordinal>10</ordinal>
+              <family>d_transaction</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>account_id</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[account_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>account_id</remote-alias>
+              <ordinal>11</ordinal>
+              <family>d_transaction</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
       <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
       <style>
         <style-rule element='mark'>
+          <encoding attr='color' field='[wd:created_at:ok]' palette='green_gold_10_0' type='palette'>
+            <map to='#146c36'>
+              <bucket>7</bucket>
+            </map>
+            <map to='#2e7f46'>
+              <bucket>6</bucket>
+            </map>
+            <map to='#439350'>
+              <bucket>5</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>2020</bucket>
+            </map>
+            <map to='#60a656'>
+              <bucket>4</bucket>
+            </map>
+            <map to='#8eb858'>
+              <bucket>3</bucket>
+            </map>
+            <map to='#c0c55d'>
+              <bucket>2</bucket>
+            </map>
+            <map to='#f4d166'>
+              <bucket>1</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313160495109:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313161043974:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation1:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313164857353:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313164144647:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]:1&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:roundup_value:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[diff:sum:amount_value:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:Calculation_1941332928851574784:qk]&quot;</bucket>
+            </map>
+          </encoding>
           <encoding attr='color' field='[mn:created_at:ok]' palette='blue_10_0' type='palette'>
             <map to='#2a5783'>
               <bucket>8</bucket>
@@ -322,71 +587,27 @@
               <bucket>2</bucket>
             </map>
           </encoding>
-          <encoding attr='color' field='[:Measure Names]' type='palette'>
-            <map to='#4e79a7'>
-              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313160495109:qk]&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313161043974:qk]&quot;</bucket>
-            </map>
-            <map to='#59a14f'>
-              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313164857353:qk]&quot;</bucket>
-            </map>
-            <map to='#76b7b2'>
-              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313164144647:qk]&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]:1&quot;</bucket>
-            </map>
-            <map to='#edc948'>
-              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:roundup_value:qk]&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value:qk]&quot;</bucket>
-            </map>
-          </encoding>
-          <encoding attr='color' field='[wd:created_at:ok]' type='palette'>
-            <map to='#4e79a7'>
-              <bucket>2020</bucket>
-            </map>
-            <map to='#59a14f'>
-              <bucket>4</bucket>
-            </map>
-            <map to='#76b7b2'>
-              <bucket>3</bucket>
-            </map>
-            <map to='#b07aa1'>
-              <bucket>6</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>2</bucket>
-            </map>
-            <map to='#edc948'>
-              <bucket>5</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>1</bucket>
-            </map>
-            <map to='#ff9da7'>
-              <bucket>7</bucket>
-            </map>
-          </encoding>
         </style-rule>
       </style>
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;New Zealand&quot;' />
       </semantic-values>
+      <default-sorts>
+        <manual-sort column='[none:Forecast Indicator:nk]' direction='ASC'>
+          <dictionary>
+            <bucket>&quot;Actual&quot;</bucket>
+            <bucket>&quot;Estimate&quot;</bucket>
+          </dictionary>
+        </manual-sort>
+      </default-sorts>
       <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
         <objects>
           <object caption='d_transaction' id='d_transaction_4C694BC52A514120A9443CB3164B71CA'>
             <properties context=''>
               <relation connection='postgres.0iioro70cxgn4918i4sxs0r7uobn' name='d_transaction' table='[public].[d_transaction]' type='table' />
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
             </properties>
           </object>
         </objects>
@@ -399,17 +620,11 @@
         <datasource caption='d_transaction (upBank)' name='federated.0k2q1l71jb5u3913wsvyg1drrjx7' />
       </datasources>
       <datasource-dependencies datasource='federated.0k2q1l71jb5u3913wsvyg1drrjx7'>
-        <column datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
         <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
-        <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
         <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
       </datasource-dependencies>
       <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]'>
         <groupfilter function='member' level='[none:user_id:nk]' member='&quot;hamish&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
-      </filter>
-      <filter class='quantitative' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' included-values='in-range'>
-        <min>#2020-02-06 00:00:00#</min>
-        <max>#2020-08-07 00:00:00#</max>
       </filter>
     </shared-view>
   </shared-views>
@@ -420,6 +635,14 @@
       <command command='tsc:tsl-filter'>
         <param name='special-fields' value='all' />
         <param name='target' value='Accumulation' />
+      </command>
+    </action>
+    <action caption='Highlight 1 (generated)' name='[Action2]'>
+      <activation auto-clear='true' type='on-select' />
+      <source type='sheet' worksheet='Total Capital' />
+      <command command='tsc:brush'>
+        <param name='field-captions' value='Measure Names' />
+        <param name='target' value='Total Capital' />
       </command>
     </action>
   </actions>
@@ -433,14 +656,12 @@
           <datasource-dependencies datasource='federated.0k2q1l71jb5u3913wsvyg1drrjx7'>
             <column datatype='real' name='[amount_value]' role='measure' type='quantitative' />
             <column datatype='integer' name='[amount_value_base]' role='measure' type='quantitative' />
-            <column datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
             <column datatype='string' name='[description]' role='dimension' type='nominal' />
             <column-instance column='[amount_value_base]' derivation='None' name='[none:amount_value_base:qk]' pivot='key' type='quantitative' />
             <column-instance column='[description]' derivation='None' name='[none:description:nk]' pivot='key' type='nominal' />
             <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
             <column-instance column='[amount_value]' derivation='Sum' name='[sum:amount_value:qk]' pivot='key' type='quantitative' />
             <column-instance column='[amount_value_base]' derivation='Sum' name='[sum:amount_value_base:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
             <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
           </datasource-dependencies>
           <filter class='quantitative' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:amount_value_base:qk]' included-values='in-range'>
@@ -477,7 +698,6 @@
             </groupfilter>
           </filter>
           <slices>
-            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</column>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]</column>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:amount_value_base:qk]</column>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
@@ -541,37 +761,51 @@
       <simple-id uuid='{110E6F9B-489B-4C30-8A49-7354E4ABD686}' />
     </worksheet>
     <worksheet name='Inflows'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Savings From Round Ups</run>
+          </formatted-text>
+        </title>
+      </layout-options>
       <table>
         <view>
           <datasources>
             <datasource caption='d_transaction (upBank)' name='federated.0k2q1l71jb5u3913wsvyg1drrjx7' />
           </datasources>
           <datasource-dependencies datasource='federated.0k2q1l71jb5u3913wsvyg1drrjx7'>
+            <column datatype='real' name='[amount_value]' role='measure' type='quantitative' />
             <column datatype='integer' name='[amount_value_base]' role='measure' type='quantitative' />
+            <column-instance column='[description]' derivation='Attribute' name='[attr:description:nk]' pivot='key' type='nominal' />
             <column datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
+            <column-instance column='[amount_value]' derivation='Sum' name='[cum:sum:amount_value:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
             <column datatype='string' name='[description]' role='dimension' type='nominal' />
+            <column-instance column='[created_at]' derivation='Max' name='[max:created_at:qk]' pivot='key' type='quantitative' />
             <column-instance column='[amount_value_base]' derivation='None' name='[none:amount_value_base:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[created_at]' derivation='None' name='[none:created_at:qk]' pivot='key' type='quantitative' />
             <column-instance column='[description]' derivation='None' name='[none:description:nk]' pivot='key' type='nominal' />
             <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
-            <column-instance column='[amount_value_base]' derivation='Sum' name='[sum:amount_value_base:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
             <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
           </datasource-dependencies>
           <filter class='quantitative' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:amount_value_base:qk]' included-values='in-range'>
             <min>0</min>
           </filter>
           <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]'>
-            <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
               <groupfilter function='level-members' level='[none:description:nk]' />
               <groupfilter function='union'>
-                <groupfilter function='member' level='[none:description:nk]' member='&quot;ANZ Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;$ninabrown&quot;' />
                 <groupfilter function='member' level='[none:description:nk]' member='&quot;Auto Transfer from Rent&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Beem It&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Bunnings Warehouse&quot;' />
                 <groupfilter function='member' level='[none:description:nk]' member='&quot;Cover from Savings&quot;' />
-                <groupfilter function='member' level='[none:description:nk]' member='&quot;Dad&quot;' />
                 <groupfilter function='member' level='[none:description:nk]' member='&quot;Forward from Spending&quot;' />
-                <groupfilter function='member' level='[none:description:nk]' member='&quot;GUNASEKARA H&quot;' />
-                <groupfilter function='member' level='[none:description:nk]' member='&quot;MR HAMISH R GUNA&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;IKEA&quot;' />
                 <groupfilter function='member' level='[none:description:nk]' member='&quot;Quick save transfer from Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Round Up&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Steam&quot;' />
                 <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer from Rent&quot;' />
                 <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer from Savings&quot;' />
                 <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer from Spending&quot;' />
@@ -580,21 +814,22 @@
             </groupfilter>
           </filter>
           <slices>
-            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:amount_value_base:qk]</column>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]</column>
-            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
           </slices>
           <aggregation value='true' />
         </view>
         <style>
-          <style-rule element='cell'>
-            <format attr='width' value='2864' />
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' scope='rows' value='' />
+            <format attr='title' class='0' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:created_at:qk]' scope='cols' value='' />
           </style-rule>
-          <style-rule element='table'>
-            <format attr='omit-on-special' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' value='false' />
-            <format attr='break-on-special' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' value='false' />
-            <format attr='show-null-value-warning' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' value='false' />
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' value='c&quot;$&quot;#,##0.00;-&quot;$&quot;#,##0.00' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' value='c&quot;$&quot;#,##0;-&quot;$&quot;#,##0' />
           </style-rule>
         </style>
         <panes>
@@ -602,35 +837,25 @@
             <view>
               <breakdown value='auto' />
             </view>
-            <mark class='Square' />
+            <mark class='Automatic' />
             <encodings>
-              <color column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' />
-              <size column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' />
-              <text column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]' />
+              <text column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' />
+              <text column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[attr:description:nk]' />
             </encodings>
+            <label-data column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[max:created_at:qk]' />
             <style>
               <style-rule element='mark'>
                 <format attr='mark-labels-show' value='true' />
-                <format attr='mark-labels-cull' value='true' />
-                <format attr='mark-labels-line-first' value='true' />
-                <format attr='mark-labels-line-last' value='true' />
-                <format attr='mark-labels-range-min' value='true' />
-                <format attr='mark-labels-range-max' value='true' />
-                <format attr='mark-labels-mode' value='all' />
-                <format attr='mark-labels-range-scope' value='pane' />
-                <format attr='mark-labels-range-field' value='' />
-              </style-rule>
-              <style-rule element='pane'>
-                <format attr='minwidth' value='-1' />
-                <format attr='maxwidth' value='-1' />
+                <format attr='mark-labels-cull' value='false' />
+                <format attr='mark-labels-mode' value='most-recent' />
               </style-rule>
             </style>
           </pane>
         </panes>
-        <rows />
-        <cols />
+        <rows>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]</rows>
+        <cols>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:created_at:qk]</cols>
       </table>
-      <simple-id uuid='{D81E299D-B37A-4240-8B4A-11E533CF75CC}' />
+      <simple-id uuid='{3F7FAAAB-DE4F-4387-8D8B-DBC72B2F6491}' />
     </worksheet>
     <worksheet name='Interest'>
       <layout-options>
@@ -654,8 +879,6 @@
             <column datatype='string' name='[description]' role='dimension' type='nominal' />
             <column-instance column='[description]' derivation='None' name='[none:description:nk]' pivot='key' type='nominal' />
             <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
-            <column-instance column='[amount_value]' derivation='Sum' name='[sum:amount_value:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
             <column-instance column='[created_at]' derivation='Month-Trunc' name='[tmn:created_at:qk]' pivot='key' type='quantitative' />
             <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
           </datasource-dependencies>
@@ -669,7 +892,6 @@
           <slices>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]</column>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tmn:created_at:qk]</column>
-            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</column>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
           </slices>
           <aggregation value='true' />
@@ -682,7 +904,6 @@
           <style-rule element='cell'>
             <format attr='font-size' data-class='subtotal' scope='cols' value='15' />
             <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' value='c&quot;$&quot;#,##0;-&quot;$&quot;#,##0' />
-            <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value:qk]' value='c&quot;$&quot;#,##0.00;-&quot;$&quot;#,##0.00' />
           </style-rule>
           <style-rule element='label'>
             <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' value='c&quot;$&quot;#,##0;-&quot;$&quot;#,##0' />
@@ -695,7 +916,7 @@
             </view>
             <mark class='Automatic' />
             <encodings>
-              <text column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value:qk]' />
+              <text column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' />
             </encodings>
             <style>
               <style-rule element='mark'>
@@ -729,19 +950,47 @@
             <column-instance column='[amount_value]' derivation='Sum' name='[cum:sum:amount_value:qk]' pivot='key' type='quantitative'>
               <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
             </column-instance>
+            <column datatype='string' name='[description]' role='dimension' type='nominal' />
             <column-instance column='[created_at]' derivation='Day' name='[dy:created_at:ok]' pivot='key' type='ordinal' />
             <column-instance column='[created_at]' derivation='Month' name='[mn:created_at:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[description]' derivation='None' name='[none:description:nk]' pivot='key' type='nominal' />
             <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
-            <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
             <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]'>
             <groupfilter function='level-members' level='[mn:created_at:ok]' />
           </filter>
+          <manual-sort column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]' direction='ASC'>
+            <dictionary>
+              <bucket>8</bucket>
+              <bucket>7</bucket>
+              <bucket>6</bucket>
+              <bucket>5</bucket>
+              <bucket>4</bucket>
+              <bucket>3</bucket>
+              <bucket>2</bucket>
+              <bucket>%all%</bucket>
+            </dictionary>
+          </manual-sort>
+          <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:description:nk]' />
+              <groupfilter function='union'>
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Afterpay&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;ANZ Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;CommBank Trading&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Dad&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;GUNASEKARA H&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Hub Australia&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Interactive Br Aus&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Keith Gunasekara&quot;' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
           <slices>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]</column>
-            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</column>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -749,11 +998,21 @@
           <style-rule element='axis'>
             <format attr='title' class='0' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' scope='rows' value='' />
           </style-rule>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[dy:created_at:ok]' value='22' />
+          </style-rule>
           <style-rule element='label'>
             <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' value='c&quot;$&quot;#,##0;-&quot;$&quot;#,##0' />
           </style-rule>
           <style-rule element='worksheet'>
             <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]' value='Month'>
+              <formatted-text>
+                <run>Month</run>
+              </formatted-text>
+            </format>
           </style-rule>
         </style>
         <panes>
@@ -773,6 +1032,10 @@
                 <format attr='mark-color' value='#4e79a7' />
                 <format attr='mark-markers-mode' value='auto' />
                 <format attr='line-interpolation' value='step' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
               </style-rule>
             </style>
           </pane>
@@ -801,12 +1064,11 @@
             <column-instance column='[description]' derivation='None' name='[none:description:nk]' pivot='key' type='nominal' />
             <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
             <column-instance column='[amount_value_base]' derivation='Sum' name='[sum:amount_value_base:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
             <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]'>
             <groupfilter expression='ISNULL([description]) OR (NOT(CONTAINS(LOWER([description]), LOWER(&apos;transfer&apos;))))' function='filter' user:ui-enumeration='exclusive' user:ui-pattern-include-all-when-empty='true' user:ui-pattern_text='transfer' user:ui-pattern_type='contains'>
-              <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
                 <groupfilter function='member' level='[none:description:nk]' member='&quot;$charliemcd&quot;' />
                 <groupfilter function='member' level='[none:description:nk]' member='&quot;$hg&quot;' />
                 <groupfilter function='member' level='[none:description:nk]' member='&quot;$ninabrown&quot;' />
@@ -1051,7 +1313,6 @@
             <max>0</max>
           </filter>
           <slices>
-            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</column>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]</column>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]</column>
@@ -1060,13 +1321,14 @@
         </view>
         <style />
         <panes>
-          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow'>
             <view>
               <breakdown value='auto' />
             </view>
             <mark class='Line' />
             <encodings>
               <text column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[attr:description:nk]' />
+              <color column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[:Measure Names]' />
             </encodings>
             <trendline enable-confidence-bands='false' enable-instant-analytics='true' enabled='true' exclude-color='false' exclude-intercept='false' fit='linear' />
             <style>
@@ -1108,10 +1370,10 @@
               <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
             </column-instance>
             <column datatype='string' name='[description]' role='dimension' type='nominal' />
+            <column-instance column='[created_at]' derivation='Max' name='[max:created_at:qk]' pivot='key' type='quantitative' />
             <column-instance column='[created_at]' derivation='None' name='[none:created_at:qk]' pivot='key' type='quantitative' />
             <column-instance column='[description]' derivation='None' name='[none:description:nk]' pivot='key' type='nominal' />
             <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
-            <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
             <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]'>
@@ -1119,7 +1381,6 @@
           </filter>
           <slices>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]</column>
-            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</column>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
           </slices>
           <aggregation value='true' />
@@ -1142,10 +1403,15 @@
               <breakdown value='auto' />
             </view>
             <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[cum:sum:amount_value:qk]' />
+            </encodings>
+            <label-data column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[max:created_at:qk]' />
             <style>
               <style-rule element='mark'>
-                <format attr='mark-labels-cull' value='true' />
-                <format attr='mark-labels-show' value='false' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='false' />
+                <format attr='mark-labels-mode' value='most-recent' />
               </style-rule>
             </style>
           </pane>
@@ -1154,26 +1420,6 @@
         <cols>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:created_at:qk]</cols>
       </table>
       <simple-id uuid='{601F7A4D-02E9-428C-B191-F07E447F3464}' />
-    </worksheet>
-    <worksheet name='Sheet 8'>
-      <table>
-        <view>
-          <datasources />
-          <aggregation value='true' />
-        </view>
-        <style />
-        <panes>
-          <pane selection-relaxation-option='selection-relaxation-allow'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Automatic' />
-          </pane>
-        </panes>
-        <rows />
-        <cols />
-      </table>
-      <simple-id uuid='{21730D86-57CD-4E80-9F11-5103E2A57746}' />
     </worksheet>
     <worksheet name='Total Capital'>
       <table>
@@ -1199,6 +1445,7 @@
               <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
             </column-instance>
             <column datatype='string' name='[description]' role='dimension' type='nominal' />
+            <column-instance column='[created_at]' derivation='None' name='[none:created_at:qk]' pivot='key' type='quantitative' />
             <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
             <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
             <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
@@ -1222,10 +1469,14 @@
               <bucket>&quot;[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[usr:Calculation_868350313164144647:qk]&quot;</bucket>
             </dictionary>
           </manual-sort>
+          <filter class='quantitative' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:created_at:qk]' included-values='in-range'>
+            <min>#2020-02-06 01:09:56#</min>
+            <max>#2020-08-14 03:41:09#</max>
+          </filter>
           <slices>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[:Measure Names]</column>
-            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</column>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:created_at:qk]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -1240,6 +1491,13 @@
           </style-rule>
           <style-rule element='label'>
             <format attr='text-format' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[Multiple Values]' value='c&quot;$&quot;#,##0;-&quot;$&quot;#,##0' />
+          </style-rule>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[:Measure Names]' value='Measures&#10;'>
+              <formatted-text>
+                <run>Measures&#10;</run>
+              </formatted-text>
+            </format>
           </style-rule>
         </style>
         <panes>
@@ -1278,17 +1536,45 @@
             <datasource caption='d_transaction (upBank)' name='federated.0k2q1l71jb5u3913wsvyg1drrjx7' />
           </datasources>
           <datasource-dependencies datasource='federated.0k2q1l71jb5u3913wsvyg1drrjx7'>
-            <column datatype='real' name='[amount_value]' role='measure' type='quantitative' />
+            <column caption='inverse' datatype='real' name='[Calculation_1941332928851574784]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='-[amount_value_base]/100' />
+            </column>
+            <column datatype='integer' name='[amount_value_base]' role='measure' type='quantitative' />
             <column datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[description]' role='dimension' type='nominal' />
             <column datatype='string' name='[message]' role='dimension' type='nominal' />
+            <column-instance column='[amount_value_base]' derivation='None' name='[none:amount_value_base:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[description]' derivation='None' name='[none:description:nk]' pivot='key' type='nominal' />
             <column-instance column='[message]' derivation='None' name='[none:message:nk]' pivot='key' type='nominal' />
             <column-instance column='[user_id]' derivation='None' name='[none:user_id:nk]' pivot='key' type='nominal' />
-            <column-instance column='[amount_value]' derivation='Sum' name='[sum:amount_value:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[created_at]' derivation='Day-Trunc' name='[tdy:created_at:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1941332928851574784]' derivation='Sum' name='[sum:Calculation_1941332928851574784:qk]' pivot='key' type='quantitative' />
             <column-instance column='[created_at]' derivation='Week-Trunc' name='[twk:created_at:qk]' pivot='key' type='quantitative' />
             <column datatype='string' name='[user_id]' role='dimension' type='nominal' />
             <column-instance column='[created_at]' derivation='Weekday' name='[wd:created_at:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
+          <filter class='quantitative' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:amount_value_base:qk]' included-values='in-range'>
+            <max>0</max>
+          </filter>
+          <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:description:nk]' />
+              <groupfilter function='union'>
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;ANZ Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Auto Transfer to Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Charlie Baylis&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Charlie Up&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;CommBank Trading&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Forward to Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;GUNASEKARA H&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Interactive Br Aus&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Keith Gunasekara&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to Rent&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to Savings&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to Spending&quot;' />
+                <groupfilter function='member' level='[none:description:nk]' member='&quot;Transfer to Spending Saver&quot;' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
           <filter class='categorical' column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:message:nk]'>
             <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
               <groupfilter function='level-members' level='[none:message:nk]' />
@@ -1302,12 +1588,25 @@
           </filter>
           <slices>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:message:nk]</column>
-            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]</column>
             <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:user_id:nk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:amount_value_base:qk]</column>
+            <column>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]</column>
           </slices>
           <aggregation value='true' />
         </view>
-        <style />
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[twk:created_at:qk]' scope='cols' value='Week' />
+            <format attr='title' class='0' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:Calculation_1941332928851574784:qk]' scope='rows' value='Dollars Spent' />
+          </style-rule>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[wd:created_at:ok]' value='Day of Week&#10;'>
+              <formatted-text>
+                <run>Day of Week&#10;</run>
+              </formatted-text>
+            </format>
+          </style-rule>
+        </style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view>
@@ -1318,9 +1617,15 @@
             <encodings>
               <color column='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[wd:created_at:ok]' />
             </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
           </pane>
         </panes>
-        <rows>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value:qk]</rows>
+        <rows>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:Calculation_1941332928851574784:qk]</rows>
         <cols>[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[twk:created_at:qk]</cols>
       </table>
       <simple-id uuid='{BDDC1EDF-4CAF-4C47-923C-A8B2F1FD7552}' />
@@ -1339,10 +1644,10 @@
       </datasource-dependencies>
       <zones>
         <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='4' w='100000' x='0' y='0'>
-          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='89845' id='28' param='horz' w='99504' x='248' y='642'>
-            <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='89845' id='23' param='horz' w='99504' x='248' y='642'>
-              <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='89845' id='21' w='99504' x='248' y='642'>
-                <zone h='44917' id='3' name='Total Capital' w='99504' x='248' y='642'>
+          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='89016' id='28' param='horz' w='98848' x='576' y='1093'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='89016' id='23' param='horz' w='98848' x='576' y='1093'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='89016' id='21' w='98848' x='576' y='1093'>
+                <zone h='44496' id='3' name='Total Capital' w='98848' x='576' y='1093'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1350,7 +1655,7 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone h='22464' id='5' name='Round Ups' w='39365' x='60387' y='68023'>
+                <zone h='22263' id='5' name='Round Ups' w='39110' x='60314' y='67846'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1358,7 +1663,7 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone h='22464' id='6' name='Interest' w='39365' x='60387' y='45559'>
+                <zone h='22257' id='6' name='Interest' w='39110' x='60314' y='45589'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1366,7 +1671,7 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone h='44928' id='26' name='Monthly Comparison' w='60139' x='248' y='45559'>
+                <zone h='44520' id='26' name='Monthly Comparison' w='59738' x='576' y='45589'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1377,8 +1682,8 @@
               </zone>
             </zone>
           </zone>
-          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' fixed-size='154' h='8871' id='27' is-fixed='true' param='vert' w='99504' x='248' y='90487'>
-            <zone _.fcp.SetMembershipControl.false...type='filter' _.fcp.SetMembershipControl.true...type-v2='filter' fixed-size='58' h='5293' id='30' is-fixed='true' name='Total Capital' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' values='database' w='99504' x='248' y='90487'>
+          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' fixed-size='154' h='8798' id='27' is-fixed='true' param='vert' w='98848' x='576' y='90109'>
+            <zone _.fcp.SetMembershipControl.false...type='filter' _.fcp.SetMembershipControl.true...type-v2='filter' fixed-size='58' h='4426' id='30' is-fixed='true' name='Total Capital' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' values='database' w='98848' x='576' y='90109'>
               <zone-style>
                 <format attr='border-color' value='#000000' />
                 <format attr='border-style' value='none' />
@@ -1386,7 +1691,7 @@
                 <format attr='margin' value='4' />
               </zone-style>
             </zone>
-            <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='3578' id='29' name='Monthly Comparison' pane-specification-id='5' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]' w='99504' x='248' y='95780'>
+            <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='4372' id='29' name='Monthly Comparison' pane-specification-id='5' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]' w='98848' x='576' y='94535'>
               <zone-style>
                 <format attr='border-color' value='#000000' />
                 <format attr='border-style' value='none' />
@@ -1407,9 +1712,9 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='1100' minheight='1100' sizing-mode='vscroll' />
           <zones>
-            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='40' w='100000' x='0' y='0'>
-              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98734' id='39' param='vert' w='99504' x='248' y='633'>
-                <zone _.fcp.SetMembershipControl.false...type='filter' _.fcp.SetMembershipControl.true...type-v2='filter' fixed-size='58' h='5225' id='30' name='Total Capital' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' values='database' w='99504' x='248' y='90499'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='46' w='100000' x='0' y='0'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='97814' id='45' param='vert' w='98848' x='576' y='1093'>
+                <zone _.fcp.SetMembershipControl.false...type='filter' _.fcp.SetMembershipControl.true...type-v2='filter' fixed-size='58' h='4426' id='30' name='Total Capital' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' values='database' w='98848' x='576' y='90109'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1418,7 +1723,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='280' h='44931' id='3' is-fixed='true' name='Total Capital' w='99504' x='248' y='633'>
+                <zone fixed-size='280' h='44496' id='3' is-fixed='true' name='Total Capital' w='98848' x='576' y='1093'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1427,7 +1732,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='280' h='44935' id='26' is-fixed='true' name='Monthly Comparison' w='60142' x='248' y='45564'>
+                <zone fixed-size='280' h='44520' id='26' is-fixed='true' name='Monthly Comparison' w='59738' x='576' y='45589'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1436,7 +1741,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='3643' id='29' name='Monthly Comparison' pane-specification-id='5' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]' w='99504' x='248' y='95724'>
+                <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='4372' id='29' name='Monthly Comparison' pane-specification-id='5' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]' w='98848' x='576' y='94535'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1445,7 +1750,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='171' h='22469' id='6' is-fixed='true' name='Interest' w='39362' x='60390' y='45564'>
+                <zone fixed-size='170' h='22257' id='6' is-fixed='true' name='Interest' w='39110' x='60314' y='45589'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1454,7 +1759,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='172' h='22466' id='5' is-fixed='true' name='Round Ups' w='39362' x='60390' y='68033'>
+                <zone fixed-size='170' h='22263' id='5' is-fixed='true' name='Round Ups' w='39110' x='60314' y='67846'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1481,9 +1786,9 @@
       <size sizing-mode='automatic' />
       <zones>
         <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='4' w='100000' x='0' y='0'>
-          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98716' id='7' param='horz' w='99504' x='248' y='642'>
-            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='98716' id='5' w='94549' x='248' y='642'>
-              <zone h='49358' id='3' name='Weekly Spend' w='94549' x='248' y='642'>
+          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='97814' id='7' param='horz' w='98848' x='576' y='1093'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='97814' id='5' w='87329' x='576' y='1093'>
+              <zone h='48907' id='3' name='Weekly Spend' w='87329' x='576' y='1093'>
                 <zone-style>
                   <format attr='border-color' value='#000000' />
                   <format attr='border-style' value='none' />
@@ -1491,7 +1796,7 @@
                   <format attr='margin' value='4' />
                 </zone-style>
               </zone>
-              <zone h='49358' id='9' name='Biggest Spends' w='94549' x='248' y='50000'>
+              <zone h='48907' id='9' name='Biggest Spends' w='87329' x='576' y='50000'>
                 <zone-style>
                   <format attr='border-color' value='#000000' />
                   <format attr='border-style' value='none' />
@@ -1500,8 +1805,8 @@
                 </zone-style>
               </zone>
             </zone>
-            <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' fixed-size='160' h='98716' id='6' is-fixed='true' param='vert' w='4955' x='94797' y='642'>
-              <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='13312' id='8' name='Weekly Spend' pane-specification-id='0' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[wd:created_at:ok]' w='4955' x='94797' y='642'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' fixed-size='160' h='97814' id='6' is-fixed='true' param='vert' w='11519' x='87905' y='1093'>
+              <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='22678' id='8' name='Weekly Spend' pane-specification-id='0' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[wd:created_at:ok]' w='11519' x='87905' y='1093'>
                 <zone-style>
                   <format attr='border-color' value='#000000' />
                   <format attr='border-style' value='none' />
@@ -1523,9 +1828,9 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='13' w='100000' x='0' y='0'>
-              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98734' id='12' param='vert' w='99504' x='248' y='633'>
-                <zone fixed-size='280' h='49367' id='3' is-fixed='true' name='Weekly Spend' w='94549' x='248' y='633'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='19' w='100000' x='0' y='0'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='97814' id='18' param='vert' w='98848' x='576' y='1093'>
+                <zone fixed-size='280' h='48907' id='3' is-fixed='true' name='Weekly Spend' w='87329' x='576' y='1093'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1534,7 +1839,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='13143' id='8' name='Weekly Spend' pane-specification-id='0' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[wd:created_at:ok]' w='4955' x='94797' y='633'>
+                <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='22678' id='8' name='Weekly Spend' pane-specification-id='0' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[wd:created_at:ok]' w='11519' x='87905' y='1093'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1543,7 +1848,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='280' h='49367' id='9' is-fixed='true' name='Biggest Spends' w='94549' x='248' y='50000'>
+                <zone fixed-size='280' h='48907' id='9' is-fixed='true' name='Biggest Spends' w='87329' x='576' y='50000'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -1566,8 +1871,8 @@
       <simple-id uuid='{387562DD-9715-48DD-9E53-4591D747AE1A}' />
     </dashboard>
   </dashboards>
-  <windows source-height='30'>
-    <window class='worksheet' name='Total Capital'>
+  <windows saved-dpi-scale-factor='0.875' source-height='30'>
+    <window class='worksheet' maximized='true' name='Total Capital'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -1588,9 +1893,8 @@
             <card type='title' />
           </strip>
         </edge>
-        <edge name='right'>
-          <strip size='160'>
-            <card param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+        <edge name='bottom'>
+          <strip size='2147483647'>
             <card pane-specification-id='2' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[:Measure Names]' type='color' />
           </strip>
         </edge>
@@ -1613,17 +1917,19 @@
           <strip size='2147483647'>
             <card type='rows' />
           </strip>
-          <strip size='31'>
+          <strip size='2147483647'>
             <card type='title' />
           </strip>
         </edge>
-        <edge name='right'>
-          <strip size='160'>
-            <card param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+        <edge name='bottom'>
+          <strip size='2147483647'>
             <card pane-specification-id='5' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[mn:created_at:ok]' type='color' />
           </strip>
         </edge>
       </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
       <simple-id uuid='{ADE4E1F0-71B0-4FCF-B88E-48ABBDC37BE4}' />
     </window>
     <window class='worksheet' name='Round Ups'>
@@ -1692,8 +1998,8 @@
             <card type='title' />
           </strip>
         </edge>
-        <edge name='right'>
-          <strip size='160'>
+        <edge name='bottom'>
+          <strip size='2147483647'>
             <card pane-specification-id='0' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[wd:created_at:ok]' type='color' />
           </strip>
         </edge>
@@ -1756,6 +2062,7 @@
           <strip size='160'>
             <card mode='pattern' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[none:description:nk]' type='filter' />
             <card param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[tdy:created_at:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+            <card pane-specification-id='3' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[:Measure Names]' type='color' />
           </strip>
         </edge>
       </cards>
@@ -1781,18 +2088,10 @@
             <card type='title' />
           </strip>
         </edge>
-        <edge name='right'>
-          <strip size='160'>
-            <card pane-specification-id='0' param='[federated.0k2q1l71jb5u3913wsvyg1drrjx7].[sum:amount_value_base:qk]' type='color' />
-          </strip>
-        </edge>
       </cards>
-      <viewpoint>
-        <zoom type='entire-view' />
-      </viewpoint>
-      <simple-id uuid='{86D74382-CDA5-44DB-99E2-0CDC8FCD3C33}' />
+      <simple-id uuid='{B7D360CD-FB5F-4502-A1C0-38123A4CF3DD}' />
     </window>
-    <window class='dashboard' maximized='true' name='Accumulation'>
+    <window class='dashboard' name='Accumulation'>
       <viewpoints>
         <viewpoint name='Interest'>
           <zoom type='entire-view' />
@@ -1808,7 +2107,7 @@
           <floating-toolbar-visibility value='2' />
         </viewpoint>
       </viewpoints>
-      <active id='26' />
+      <active id='30' />
       <simple-id uuid='{7A9D9692-2C02-4E9B-B021-44A144CA86EF}' />
     </window>
     <window class='dashboard' name='Spending'>
@@ -1820,29 +2119,6 @@
       </viewpoints>
       <active id='9' />
       <simple-id uuid='{32E9778C-B707-4F7F-AC91-ADDCAB95A02B}' />
-    </window>
-    <window class='worksheet' name='Sheet 8'>
-      <cards>
-        <edge name='left'>
-          <strip size='160'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='2147483647'>
-            <card type='columns' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='rows' />
-          </strip>
-          <strip size='31'>
-            <card type='title' />
-          </strip>
-        </edge>
-      </cards>
-      <simple-id uuid='{E0FD5F73-5500-4846-BC90-AD7BE1D27F5A}' />
     </window>
   </windows>
 </workbook>

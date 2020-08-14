@@ -21,8 +21,9 @@ from datetime import datetime, timedelta
 if sys.argv:
     user_id = sys.argv[1]
     if user_id == 'hamish' or user_id == 'nina':
-        header, cur, con = up_analytics.connect_to_db(user_id)
-
+        cur, con = up_analytics.connect_to_db()
+        header = up_analytics.connect_to_up(user_id)
+        
         transaction_params = {'page[size]': 100}
         up_analytics.extract_transactions(header, cur, con, transaction_params, user_id)
 
