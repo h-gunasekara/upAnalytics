@@ -27,5 +27,3 @@ Things I want to see in a monthly report:
     4. money gained from interest
     5. weekly spends
     6. Budgets
-
-test
