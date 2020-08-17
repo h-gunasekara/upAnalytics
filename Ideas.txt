@@ -1,7 +1,6 @@
 Create a monthly reporting system
 create a website to track various analytics
     Send it to up 
-        get a job working with them
     
 Things to do:
 
@@ -14,8 +13,6 @@ Things to do:
     5. create website
         a. create bespoke analytics 
     6. create login system
-    7. send to the head of product
-
 Nice to haves:
     1. Connect with Spaceship and IBKR
 
