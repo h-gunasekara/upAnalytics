@@ -22,8 +22,8 @@ from configparser import ConfigParser
 def connect_to_db():
     # connect to db
     con = psycopg2.connect(
-        host="localhost",
-        database="upBank",
+        host="upbankrds.cmk1szpqwflw.ap-southeast-2.rds.amazonaws.com",
+        database="upbank",
         user="postgres",
         password="hamish123")
     # cursor
