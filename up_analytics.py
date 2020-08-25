@@ -69,11 +69,13 @@ def upload_to_db(
         created_at,
         user_id,
         account_id,
+        parent_category,
+        category,
         cur,
         con):
     print("Uploading transaction from {} to the database".format(description))
     cur.execute(
-        "insert into d_transaction (transaction_id, tran_type, description, message, roundup, roundup_value, roundup_value_base, amount_value, amount_value_base, created_at, user_id, account_id) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+        "insert into d_transaction (transaction_id, tran_type, description, message, roundup, roundup_value, roundup_value_base, amount_value, amount_value_base, created_at, user_id, account_id, parent_category, category) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
         (transaction_id,
          tran_type,
          description,
@@ -87,7 +89,9 @@ def upload_to_db(
             amount_value_base,
             created_at,
             user_id,
-            account_id))
+            account_id,
+            parent_category,
+            category))
 
     # commit everything
     con.commit()
@@ -128,7 +132,12 @@ def extract_transactions(header, cur, con, transaction_params, user_id):
 
         
                 account_id = info['relationships']['account']['data']['id']
-
+                if info['relationships']['parentCategory']['data']:
+                    parent_category = info['relationships']['parentCategory']['data']['id']
+                    category = info['relationships']['category']['data']['id']
+                else:
+                    parent_category = ''
+                    category = ''
                 # print("id is " + str(transaction_id))
                 # print("tran_type is " + str(tran_type))
                 # print("description is " + str(description))
@@ -151,11 +160,34 @@ def extract_transactions(header, cur, con, transaction_params, user_id):
                     created_at,
                     user_id,
                     account_id,
+                    parent_category,
+                    category,
                     cur,
                     con)
                 
         # Go to next page
         tran_page_url = current_page['links']['next']
+
+def get_categories(header, cur, con, transaction_id):
+    tran_page_url = "https://api.up.com.au/api/v1/categories/{}".format(transaction_id)
+    r = requests.get(
+        tran_page_url,
+        headers=header)
+    current_page = json.loads(r.text)
+    print(current_page)
+    data = current_page['data']
+
+    if r.status_code == 200:
+        print("Connected to Up API")
+    
+    if not data:
+        print("Transaction not found")
+    else:
+        info = current_page['data']
+        category_name = info['attributes']['name']
+        return category_name
+    return False
+    
 
 
 def close_db(cur, con):
